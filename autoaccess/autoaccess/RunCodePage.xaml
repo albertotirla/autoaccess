@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoaccess.RunCodePage">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <Editor
+                    x:Name="edCode"
+                Placeholder="type your code here"    
+                />
+
+            <Button
+    x:Name="btnStartCode"
+        Text="compile"
+        HorizontalOptions="End"
+                VerticalOptions="EndAndExpand"
+                Clicked="btnStartCode_Clicked"
+            />
+            <Button
+x:Name="btnReset"
+            Text="reset"
+        HorizontalOptions="End"
+                VerticalOptions="EndAndExpand"
+                    BorderColor="Fuchsia"
+            Clicked="btnReset_Clicked"
+/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

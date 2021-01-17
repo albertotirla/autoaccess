@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoaccess.MainPage">
+
+    <StackLayout>
+        <Button
+    x:Name="btnRun"
+    Text="start live code runner"
+    HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Clicked="btnRun_Clicked"
+    />
+        <Button
+        x:Name="btnLoadFile"
+        Text="load a file in code editor"
+    HorizontalOptions="Start"
+            VerticalOptions="Start"
+       Clicked="btnLoadFile_Clicked"
+        />
+    </StackLayout>
+
+</ContentPage>
