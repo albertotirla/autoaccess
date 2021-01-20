@@ -10,7 +10,7 @@ namespace autoaccess.scriptables
 {
     public class VibrationService
     {
-        public static (bool, string) Vibrate(int seconds = 0)
+        public (bool, string) Vibrate(int seconds = 0)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace autoaccess.scriptables
                 return (false, exc.Message);
             }
         }
-        public static (bool, string) VibrateAndWait(int seconds = 0)
+        public (bool, string) VibrateAndWait(int seconds = 0)
         {
             try
             {
