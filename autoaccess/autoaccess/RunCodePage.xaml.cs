@@ -26,28 +26,18 @@ namespace autoaccess
         private void InitLua()
         {
             LuaState = new Lua();
-            LuaState["__page__"]=this;
-            /*
-             * because of the nature of alert displaying support in xamarin.forms, we need the screen we're on to call it, since it's a method implemented in the ContentPage base class.
-             * for now, I decided to implement the print function which almost every lua script expects with a redirect to the DisplayAlert method. But as I want to be compatible with other interpreters, at least on this one, the function needs to be static in .net terminology.
-             * So, I will put the current instance of the ContentPage class(this keyword) in the global table with a weird name, then I'll run some lua code at startup to create the tipical print function one will expect from other interpreters.
-             */
+//            LuaState["__page__"]=this;
             const string PrintFunctionCode = "function print(message) __page__:DisplayAlert(\"program output\", tostring(message), \"OK\") end";
             LuaState.LoadCLRPackage();
             LuaState.DoString(PrintFunctionCode);
-                        LuaState.RegisterFunction("speak", this.GetType().GetMethod("speak"));
+                        
+LuaState["tts"]=new tts();
             //LuaState.RegisterFunction("vibrate", this.GetType().GetMethod("Vibrate"));
             LuaState["PowerIndicator"] = new PowerIndicator();
             LuaState["VibrationService"] = new VibrationService();
         }   
-
-        public static async void speak(Object MessageToSpeak)
+public static async void speak(Object MessageToSpeak)
         {
-            if (MessageToSpeak == null)
-            {
-                await TextToSpeech.SpeakAsync("null value");
-                return;
-            }
             await TextToSpeech.SpeakAsync(MessageToSpeak.ToString());
         }
         async void btnStartCode_Clicked(object sender, EventArgs e)
