@@ -8,14 +8,14 @@ namespace autoaccess.scriptables
     {
         public async void speak(params object[] messages)
         {
-            for(int i=0;i<messages.Length;i++)
+            foreach(var message in messages)
             {
-                if (i == null)
+                if (message == null)
                 {
                     await TextToSpeech.SpeakAsync("null value");
                     return;
                 }
-await TextToSpeech.SpeakAsync(messages[i].ToString());
+await TextToSpeech.SpeakAsync(message.ToString());
             }
         }//func
     }//class

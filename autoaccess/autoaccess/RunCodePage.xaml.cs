@@ -26,19 +26,21 @@ namespace autoaccess
         private void InitLua()
         {
             LuaState = new Lua();
-//            LuaState["__page__"]=this;
-            const string PrintFunctionCode = "function print(message) __page__:DisplayAlert(\"program output\", tostring(message), \"OK\") end";
             LuaState.LoadCLRPackage();
-            LuaState.DoString(PrintFunctionCode);
+            LuaState.RegisterFunction("print", this, this.GetType().GetMethod("print"));
                         
 LuaState["tts"]=new tts();
-            //LuaState.RegisterFunction("vibrate", this.GetType().GetMethod("Vibrate"));
             LuaState["PowerIndicator"] = new PowerIndicator();
             LuaState["VibrationService"] = new VibrationService();
-        }   
-public static async void speak(Object MessageToSpeak)
+        }
+        public async void print(params object[] values)
         {
-            await TextToSpeech.SpeakAsync(MessageToSpeak.ToString());
+            StringBuilder sb = new StringBuilder();
+                foreach(var param in values)
+            {
+                sb.Append(param.ToString() + "\n");
+            }
+            await DisplayAlert("program output", sb.ToString(), "OK");
         }
         async void btnStartCode_Clicked(object sender, EventArgs e)
         {
@@ -50,7 +52,6 @@ public static async void speak(Object MessageToSpeak)
             {
                 await DisplayAlert("error", $"A fatal error was incountered while running your code\nException details:\n\tException type: {exc.GetType().ToString()}\n\terror message from interpreter:{exc.Message}.", "OK");
             }
-            //await DisplayAlert("information", $"the code you were about to run is:\n{edCode.Text}", "OK");
         }
 
         private void btnReset_Clicked(object sender, EventArgs e)
