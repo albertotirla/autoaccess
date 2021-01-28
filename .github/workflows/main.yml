@@ -35,7 +35,7 @@ jobs:
       
     - name: Android
       run: |
-#        cd autoaccess
+
         nuget restore
         cd autoaccess/autoaccess.Android
         msbuild autoaccess.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
@@ -49,6 +49,6 @@ jobs:
       
     - name: iOS
       run: |
-#        cd autoaccess
+
         nuget restore
         msbuild autoaccess/autoaccess.iOS/autoaccess.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
