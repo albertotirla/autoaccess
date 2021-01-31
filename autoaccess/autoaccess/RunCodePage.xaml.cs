@@ -28,16 +28,21 @@ namespace autoaccess
             LuaState = new Lua();
             LuaState.LoadCLRPackage();
             LuaState.RegisterFunction("print", this, this.GetType().GetMethod("print"));
-                        
-LuaState["tts"]=new tts();
+
+                        LuaState["tts"]=new tts();
             LuaState["PowerIndicator"] = new PowerIndicator();
             LuaState["VibrationService"] = new VibrationService();
         }
         public async void print(params object[] values)
         {
             StringBuilder sb = new StringBuilder();
-                foreach(var param in values)
+            foreach (var param in values)
             {
+                if (param == null)
+                {
+                    sb.Append("nill\n");
+                    continue;
+                }
                 sb.Append(param.ToString() + "\n");
             }
             await DisplayAlert("program output", sb.ToString(), "OK");

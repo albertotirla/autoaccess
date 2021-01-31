@@ -31,14 +31,12 @@ for now, the app will only support lua, but more languages will be hopefully add
 the app is evolving massively on a regular bases, so be warned that multiple breaking changes could appear in a single release
   # conventions
 this will remain pretty stable through the lifecycle of this app, so at least from that perspective, you don't have to worry.
-** note: An app-specific name is defined by any variable, type, function, object instance from .net, constant, or anything else you could think of that is introduced by this application. **
+* note: An app-specific name is defined by any variable, type, function, object instance from .net, constant, or anything else you could think of that is introduced by this application. **
 * If an app-specific name consists of one word and one word only, then it will be written completely in lowercase
 * However, if an app-specific name is made of multiple words, then the starting letter of each word would be capitalised. This is done in order to improve readability and slightly reduce code size because there's no need for dashes or whatever else you've seen before to separate identifiers.
   # available modules:
 For the moment, there are the following libraries available
-* PowerIndicator:
-
+* PowerIndicator:  
 used to check battery related things
-* VibrationService:
-
+* VibrationService:  
 used to emit vibrations, both blocking and non-blocking ones.
