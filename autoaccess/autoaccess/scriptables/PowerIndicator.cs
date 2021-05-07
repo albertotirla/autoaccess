@@ -22,8 +22,8 @@ public static bool IsCharging
             private set;
         }
         public double GetBatteryInfo()
-        {
-            var state = Battery.State;
+    {   
+        var state = Battery.State;
            switch (state)
             {
                 case BatteryState.Charging:
@@ -40,7 +40,7 @@ public static bool IsCharging
                         case BatteryState.Unknown:
                     return -1;
             }
-            return Battery.ChargeLevel * 100;
+            return Math.Floor(Battery.ChargeLevel * 100);
         }//func
     }//class
 }//namespace

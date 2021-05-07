@@ -18,7 +18,10 @@ namespace autoaccess
 
         private async void btnRun_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RunCodePage());
+            var CodePage = new RunCodePage();
+            //AutomationProperties.SetIsInAccessibleTree(CodePage, true);
+            AutomationProperties.SetName(CodePage, "back");
+            await Navigation.PushAsync(CodePage);
         }
 
         private async void btnLoadFile_Clicked(object sender, EventArgs e)
@@ -36,8 +39,11 @@ namespace autoaccess
             {
                 FileText = sr.ReadToEnd();
             }
-            
-await Navigation.PushAsync(new RunCodePage(FileText));
+
+            var CodePage = new RunCodePage(FileText);
+            //AutomationProperties.SetIsInAccessibleTree(CodePage, true);
+            AutomationProperties.SetName(CodePage, "back");
+            await Navigation.PushAsync(CodePage);
         }
     }
 }
