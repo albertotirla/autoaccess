@@ -40,7 +40,7 @@ public static bool IsCharging
                         case BatteryState.Unknown:
                     return -1;
             }
-            return Math.Floor(Battery.ChargeLevel * 100);
+            return Math.Floor(Battery.ChargeLevel * 100;
         }//func
     }//class
 }//namespace
