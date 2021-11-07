@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using autoaccess.scriptables;
+using NLua;
+using System;
 using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
-using NLua;
-using autoaccess.scriptables;
 
 namespace autoaccess
 {
@@ -16,7 +11,7 @@ namespace autoaccess
     public partial class RunCodePage : ContentPage
     {
         Lua LuaState { get; set; }
-        public RunCodePage( string Code="")
+        public RunCodePage(string Code = "")
         {
             InitializeComponent();
             InitLua();
@@ -29,7 +24,7 @@ namespace autoaccess
             LuaState.LoadCLRPackage();
             LuaState.RegisterFunction("print", this, this.GetType().GetMethod("print"));
 
-                        LuaState["tts"]=new tts();
+            LuaState["tts"] = new tts();
             LuaState["PowerIndicator"] = new PowerIndicator();
             LuaState["VibrationService"] = new VibrationService();
         }
@@ -63,7 +58,7 @@ namespace autoaccess
         {
             edCode.Text = string.Empty;
             InitLua();
-        
+
         }
     }
 }

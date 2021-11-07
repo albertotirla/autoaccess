@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
 namespace autoaccess
 {
@@ -19,7 +17,7 @@ namespace autoaccess
             player.Load("app_startup.wav");
             player.Play();
         }
-        
+
 
         protected override void OnSleep()
         {
@@ -30,4 +28,3 @@ namespace autoaccess
         }
     }
 }
-    

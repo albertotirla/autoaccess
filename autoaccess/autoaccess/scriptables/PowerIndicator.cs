@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Essentials;
 namespace autoaccess.scriptables
 {
     public class PowerIndicator
     {
-public static bool IsCharging
+        public static bool IsCharging
         {
             get;
             private set;
         }
-    public static bool IsFull
+        public static bool IsFull
         {
             get;
             private set;
@@ -22,9 +20,9 @@ public static bool IsCharging
             private set;
         }
         public double GetBatteryInfo()
-    {   
-        var state = Battery.State;
-           switch (state)
+        {
+            var state = Battery.State;
+            switch (state)
             {
                 case BatteryState.Charging:
                     IsCharging = true;
@@ -37,10 +35,10 @@ public static bool IsCharging
                     IsCharging = false;
                     break;
                 case BatteryState.NotPresent:
-                        case BatteryState.Unknown:
+                case BatteryState.Unknown:
                     return -1;
             }
-            return Math.Floor(Battery.ChargeLevel * 100;
+            return Math.Floor(Battery.ChargeLevel * 100);
         }//func
     }//class
 }//namespace

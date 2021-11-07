@@ -29,9 +29,41 @@ So, there is something called sl4a(scripting layer for android) that, at its cor
 However, this has its own disadvantages:
 
 * it's not cross-platform. Because it relyes too much on native code, that approach to accessible automation will remain only for android
-* no accessible frontends have been developed for it as of now. Of course there will always be things like luastudio, but their interface is accessible to blind users no more than 10%, I'd estimate, and even that is by accident, not design.
+* no accessible frontends have been developed for it as of now. Of course there will always be things like luastudio, but their interface is accessible to blind and otherwise disabled users no more than 10%, I'd estimate, and even that is by accident, not design.
 
 So, having that in mind, I had basically two choices. Either I would develop an accessible frontend to sl4a and limit my self to android, or try to make it as cross-platform as possible, so here we are, with this beginning of an app.
+
+## environment, building, etc
+
+###programming language and tools used
+
+This application is written in c# or csharp as it's informally known, a programming language developed and founded by microsoft.  
+Since it's written in the .net ecosystem, it makes use of several libraries and paradigms available in the .net core, like file IO, asyncronous programming principles, etc.  
+I also based my app around xamarin.forms and the companion pluggin, xamarin.essentials, a framework that allows cross-platform mobile and desktop development with the same set of libraries, .net standard.
+
+###building
+
+to build the app, you nead:
+
+* visual studio 2019 or later
+* xamarin.forms stable version 5 or later
+* the latest android sdk and windows sdk, not to be confused with the minimum required to run the autoaccess app, more on that later.
+
+in order to build the project, open the autoaccess.sln file in visual studio, see above for required versions.  
+Next, depending on what project you want to build, you do the following:
+
+* for android:
+  1. Right-click the autoaccess.android project in the solution explorer, then select archive autoaccess
+  2. When it finished building, visual studio will tell you so. Now, click the "distribute..." button and select ad-hock distribution.  
+Next, follow the wizard through the steps, including signing the built android archive either with a pre-made key, or you are given the option to make one on the spot.  
+When you completed the signing and entered the password, browse to where the built and signed android package should be saved.
+* for the universal windows platform(modern windows 10 application):
+  1. Right-click the project, then select publish, then create app packages.
+  2. Select the sideloading option, then press next.
+  3. As with the android application, you can choose to sign the package with either a certificate on your machine or create a new one.
+  4. Select the architecture for which the app will work, x86, x64, arm, etc.
+  5. Like the android steps, make sure you complete the wizard, including typing the cert password to complete the signing.  
+In the end, the completed package is found in the app packages in the uwp project folder.
 
 ## supported platforms
 
@@ -40,7 +72,23 @@ remember when I said this app is going to be as cross-platform as possible? well
 So, due to xamarin.forms, the app currently supports windows 10 through uwp, android and iOS.
 Those are the most popular platforms, but I will investigate on adding more upon request.
 
-## scripting languages
+## system requirements
+
+To be able to run this app, you must meet at least the following requirements:
+
+### android
+
+* Android 5.0 (API 21) or higher
+*1 gb ram minimum, at least 2 gb recommended for optimal user experience
+* a reasonably new snapdragon processor, or, in case of tablets, intel processor.
+
+### universal windows
+
+* windows 10 build 10.0.18362.0 or greater is recommended
+*4 gb ram is recommended for future features that might require more processor power, however the current version can be run on 2 gb ram
+* at least dualcore cpu recommended
+
+## available scripting languages
 
 for now, the app will only support lua, but more languages will be hopefully added in future releases
 
@@ -53,15 +101,17 @@ the app is evolving massively on a regular bases, so be warned that multiple bre
 this will remain pretty stable through the lifecycle of this app, so at least from that perspective, you don't have to worry.
 
 * note: An app-specific name is defined by any variable, type, function, object instance from .net, constant, or anything else you could think of that is introduced by this application. 
-* If an app-specific name consists of one word and one word only, then it will be written completely in lowercase
-* However, if an app-specific name is made of multiple words, then the starting letter of each word would be capitalised. This is done in order to improve readability and slightly reduce code size because there's no need for dashes or whatever else you've seen before to delimitate words in identifier names.
+* If an app-specific name consists of one word and one word only, then it will be written completely in lowercase  
+for example, "tts"
+* However, if an app-specific name is made of multiple words, then the starting letter of each word would be capitalised. This is done in order to improve readability and slightly reduce code size because there's no need for dashes or whatever else you've seen before to delimitate words in identifier names.  
+example: "VibrationService"
 
 ### available modules  
 
 For the moment, there are the following libraries available
 
 * PowerIndicator:  
-used to check battery related things
+used to check battery level, the presence of a charger, etc
 * VibrationService:  
 used to emit vibrations, both blocking and non-blocking ones.
 * tts:  
