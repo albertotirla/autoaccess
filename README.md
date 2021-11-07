@@ -35,13 +35,13 @@ So, having that in mind, I had basically two choices. Either I would develop an 
 
 ## environment, building, etc
 
-###programming language and tools used
+### programming language and tools used
 
 This application is written in c# or csharp as it's informally known, a programming language developed and founded by microsoft.  
 Since it's written in the .net ecosystem, it makes use of several libraries and paradigms available in the .net core, like file IO, asyncronous programming principles, etc.  
 I also based my app around xamarin.forms and the companion pluggin, xamarin.essentials, a framework that allows cross-platform mobile and desktop development with the same set of libraries, .net standard.
 
-###building
+### building
 
 to build the app, you nead:
 
@@ -82,15 +82,19 @@ To be able to run this app, you must meet at least the following requirements:
 *1 gb ram minimum, at least 2 gb recommended for optimal user experience
 * a reasonably new snapdragon processor, or, in case of tablets, intel processor.
 
-### universal windows
+### universal windows platform
 
 * windows 10 build 10.0.18362.0 or greater is recommended
-*4 gb ram is recommended for future features that might require more processor power, however the current version can be run on 2 gb ram
+* at least 4 gb ram is recommended for future features that might require more processor power, however the current version can be run on minimum 3 gb ram
 * at least dualcore cpu recommended
 
 ## available scripting languages
 
 for now, the app will only support lua, but more languages will be hopefully added in future releases
+
+## abandonware
+
+since I begun working on another project that requires my full attention, I will mark this project as abandonware, from now till I'll have time to work on it.
 
 ## documentation
 
